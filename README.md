@@ -168,6 +168,31 @@ Baseline (без feature engineering): модель видит только ис
 | KNN | validation | no | 0.7796 | 0.7049 | 0.6786 | 0.7333 | модель для сравнения |
 | Logistic Regression | test | no | 0.7901 | 0.7066 | 0.6657 | 0.7528 | финальная проверка выбранной модели |
 
+На втором этапе были проверены более сложные модели, ансамбли, feature engineering и PCA. Лучший результат на validation показал `HistGradientBoosting` с feature engineering.
+
+| Модель | Split | Feature engineering | ROC-AUC | F1 | Recall | Precision | Примечание |
+|---|---|---:|---:|---:|---:|---:|---|
+| HistGradientBoosting | validation | yes | 0.8039 | 0.7200 | 0.6864 | 0.7571 | лучшая модель по ROC-AUC |
+| Stacking Ensemble | validation | yes | 0.8030 | 0.7199 | 0.6870 | 0.7561 | близкий результат |
+| Random Forest | validation | yes | 0.8023 | 0.7144 | 0.6692 | 0.7663 | ансамбль деревьев |
+| Extra Trees | validation | yes | 0.8022 | 0.7191 | 0.6833 | 0.7589 | ансамбль деревьев |
+| Logistic Regression + PCA | validation | yes | 0.7894 | 0.7019 | 0.6629 | 0.7458 | PCA не улучшил качество |
+| HistGradientBoosting | test | yes | 0.8016 | 0.7231 | 0.6959 | 0.7524 | финальная модель |
+
+Финальная модель улучшила baseline Logistic Regression на test по ROC-AUC: `0.8016` против `0.7901`.
+
+Интерпретируемость финальной модели оценивалась через permutation importance на test-выборке. Самые важные признаки:
+
+| Признак | Среднее падение ROC-AUC |
+|---|---:|
+| `ap_hi` | 0.1828 |
+| `age` | 0.0395 |
+| `cholesterol` | 0.0270 |
+| `weight` | 0.0051 |
+| `ap_lo` | 0.0024 |
+
+Модель сильнее всего опирается на систолическое давление, возраст и уровень холестерина, что хорошо согласуется с медицинским смыслом задачи.
+
 
 ## Отчёт
 

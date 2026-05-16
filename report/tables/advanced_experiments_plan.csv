@@ -1,0 +1,11 @@
+experiment_id,model,feature_mode,use_pca,hypothesis,hyperparameter_candidates,search_method
+exp_01_logreg_raw_tuned,Logistic Regression tuned,raw,False,Подбор регуляризации может улучшить baseline Logistic Regression.,12,RandomizedSearchCV
+exp_02_knn_raw_tuned,KNN tuned,raw,False,"KNN чувствителен к числу соседей, поэтому настройка k может улучшить baseline.",20,RandomizedSearchCV
+exp_03_tree_engineered,Decision Tree,engineered,False,Неглубокое дерево проверяет простые нелинейные правила и взаимодействия признаков.,20,RandomizedSearchCV
+exp_04_random_forest_engineered,Random Forest,engineered,False,"Бэггинг деревьев должен устойчивее ловить нелинейности, чем одно дерево.",64,RandomizedSearchCV
+exp_05_extra_trees_engineered,Extra Trees,engineered,False,Более случайные деревья могут дать меньшую дисперсию и сильный ансамбль.,64,RandomizedSearchCV
+exp_06_hist_gradient_boosting_engineered,HistGradientBoosting,engineered,False,Boosting может лучше использовать слабые нелинейные зависимости в медицинских признаках.,81,RandomizedSearchCV
+exp_07_adaboost_engineered,AdaBoost,engineered,False,AdaBoost на слабых деревьях дает еще один вариант boosting для сравнения.,12,RandomizedSearchCV
+exp_08_logreg_engineered_pca,Logistic Regression + PCA,engineered,True,PCA может убрать корреляции после one-hot/FE и помочь линейной модели.,10,RandomizedSearchCV
+exp_09_soft_voting_engineered,Soft Voting Ensemble,engineered,False,Усреднение вероятностей разных моделей может быть стабильнее одной модели.,1,fixed parameters
+exp_10_stacking_engineered,Stacking Ensemble,engineered,False,"Мета-модель может объединить линейную модель, дерево и boosting лучше простого голосования.",1,fixed parameters

@@ -1,0 +1,2 @@
+experiment_id,model,split,feature_mode,use_pca,accuracy,precision,recall,f1,roc_auc
+exp_06_hist_gradient_boosting_engineered,HistGradientBoosting,test,engineered,False,0.7362487852283771,0.7523890422595031,0.6959340011785504,0.7230612244897959,0.8016186195999118
